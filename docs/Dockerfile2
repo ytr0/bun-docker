@@ -1,0 +1,29 @@
+FROM oven/bun:1
+
+WORKDIR /app
+
+# RUN bun init
+
+# RUN bun add hono
+
+# RUN bun add -d @cloudflare/workers-types
+
+# RUN bunx create-hono app --template cloudflare-workers
+# RUN bun add --dev --exact @biomejs/biome
+# RUN bunx @biomejs/biome init
+
+
+# RUN bun remove @sveltejs/adapter-auto
+# RUN bun add @sveltejs/adapter-cloudflare-workers
+
+# RUN bun add wrangler @cloudflare/wrangler @cloudflare/workers-types
+# RUN bunx wrangler login
+
+# RUN bun add miniflare
+
+COPY . .
+RUN bun install
+
+EXPOSE 3000
+
+CMD ["bun", "run", "index.ts"]
