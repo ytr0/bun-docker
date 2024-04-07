@@ -5,12 +5,16 @@
     "main": "src/index.ts",
     "scripts": {
       "start": "bun run src/index.ts",
-      "deploy": "wrangler deploy --minify src/index.ts"
+      "deploy": "wrangler deploy --minify src/index.ts",
+      "migrate": "drizzle-kit generate:sqlite --out migrations --schema src/DB/schema.ts",
+      "migrate:apply": "wrangler d1 migrations apply {{migration-name}}"
     },
     "dependencies": {
         "bun": "latest",
         "hono": "latest",
-        "bun-types": "latest"
+        "bun-types": "latest",
+        "@cloudflare/workers-types": "latest",
+        "@cloudflare/puppeteer": "latest"
     },
     "devDependencies": {
       "typescript": "latest"
